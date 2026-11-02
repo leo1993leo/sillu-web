@@ -225,18 +225,18 @@ a:focus-visible {
   gap: 1px;
   margin: 8px -11px -8px;
   border-top: 1px solid #ece6da;
+  background: #ece6da;
+  border-radius: 0 0 12px 12px;
+  overflow: hidden;
 }
 
 .bubble-actions span {
   padding: 7px 11px;
+  background: var(--chat-in);
   text-align: center;
   color: var(--chat-action);
   font-weight: 600;
   font-size: 0.88rem;
-}
-
-.bubble-actions span + span {
-  border-top: 1px solid #ece6da;
 }
 
 .chat-time {
@@ -430,7 +430,7 @@ section {
   font-weight: 600;
 }
 
-.faq details p {
+.faq p {
   margin-top: 8px;
   color: var(--muted);
 }
