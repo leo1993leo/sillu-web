@@ -1,0 +1,544 @@
+/* Página pública de Sillú (web/site). Sin fuentes ni servicios externos: carga rápido en cualquier celular y no rastrea a nadie. */
+
+:root {
+  color-scheme: light;
+  --ink: #17231d;
+  --muted: #566159;
+  --paper: #faf6ee;
+  --card: #fffdf8;
+  --line: #e4dccb;
+  --brand: #0f4c3a;
+  --brand-dark: #0a3528;
+  --accent: #e2a32d;
+  --chat-bg: #efe7da;
+  --chat-in: #ffffff;
+  --chat-out: #d9f5c8;
+  --chat-action: #0f7a5c;
+  --radius: 16px;
+  --display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+a {
+  color: var(--brand);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--display);
+  line-height: 1.15;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-size: clamp(1.75rem, 4.5vw, 2.5rem);
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+p {
+  margin: 0;
+}
+
+.wrap {
+  width: min(1080px, 100%);
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+/* ---------- Encabezado ---------- */
+
+.site-header {
+  border-bottom: 1px solid var(--line);
+}
+
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-block: 14px;
+}
+
+.brand {
+  font-family: var(--display);
+  font-size: 1.625rem;
+  font-weight: 700;
+  color: var(--brand);
+  text-decoration: none;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 0.975rem;
+}
+
+.site-nav a:not(.button) {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.site-nav a:not(.button):hover {
+  text-decoration: underline;
+}
+
+.button {
+  display: inline-block;
+  padding: 13px 22px;
+  border-radius: 999px;
+  background: var(--brand);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  transition: background 0.15s ease;
+}
+
+.button:hover {
+  background: var(--brand-dark);
+}
+
+.button:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.button-small {
+  padding: 8px 16px;
+  font-size: 0.95rem;
+}
+
+/* ---------- Portada ---------- */
+
+.hero {
+  padding-block: clamp(36px, 7vw, 76px);
+}
+
+.hero .wrap {
+  display: grid;
+  gap: 40px;
+  align-items: center;
+}
+
+.hero-kicker {
+  font-weight: 600;
+  color: var(--brand);
+  margin-bottom: 14px;
+}
+
+.hero h1 {
+  font-size: clamp(2.25rem, 6.4vw, 3.75rem);
+}
+
+.hero-lead {
+  margin-top: 20px;
+  font-size: 1.1875rem;
+  color: var(--muted);
+  max-width: 34em;
+}
+
+.hero-actions {
+  margin-top: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 18px;
+}
+
+/* ---------- Conversación de ejemplo ---------- */
+
+.chat {
+  width: min(390px, 100%);
+  margin-inline: auto;
+  border-radius: 26px;
+  border: 7px solid var(--ink);
+  background: var(--chat-bg);
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgb(23 35 29 / 18%);
+}
+
+.chat-title {
+  background: var(--brand);
+  color: #fff;
+  padding: 11px 16px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.chat-title small {
+  display: block;
+  font-weight: 400;
+  opacity: 0.8;
+  font-size: 0.78rem;
+}
+
+.chat-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px 12px 16px;
+  font-size: 0.92rem;
+  line-height: 1.4;
+}
+
+.bubble {
+  max-width: 86%;
+  padding: 8px 11px;
+  border-radius: 12px;
+  background: var(--chat-in);
+  align-self: flex-start;
+  box-shadow: 0 1px 1px rgb(23 35 29 / 10%);
+}
+
+.bubble.out {
+  background: var(--chat-out);
+  align-self: flex-end;
+}
+
+.bubble-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin: 8px -11px -8px;
+  border-top: 1px solid #ece6da;
+}
+
+.bubble-actions span {
+  padding: 7px 11px;
+  text-align: center;
+  color: var(--chat-action);
+  font-weight: 600;
+  font-size: 0.88rem;
+}
+
+.bubble-actions span + span {
+  border-top: 1px solid #ece6da;
+}
+
+.chat-time {
+  align-self: center;
+  background: rgb(255 255 255 / 75%);
+  color: var(--muted);
+  font-size: 0.75rem;
+  border-radius: 8px;
+  padding: 2px 10px;
+}
+
+.chat-note {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-top: 12px;
+}
+
+/* ---------- Secciones ---------- */
+
+section {
+  padding-block: clamp(40px, 7vw, 72px);
+}
+
+.section-alt {
+  background: var(--card);
+  border-block: 1px solid var(--line);
+}
+
+.section-lead {
+  margin-top: 12px;
+  color: var(--muted);
+  max-width: 40em;
+}
+
+.two-sides {
+  margin-top: 28px;
+  display: grid;
+  gap: 18px;
+}
+
+.side {
+  padding: 22px;
+  border-radius: var(--radius);
+  background: var(--paper);
+  border: 1px solid var(--line);
+}
+
+.side p {
+  margin-top: 8px;
+}
+
+/* Pasos: una línea de tiempo, en el orden en que pasan */
+.steps {
+  list-style: none;
+  counter-reset: step;
+  margin: 30px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 22px;
+}
+
+.steps li {
+  counter-increment: step;
+  position: relative;
+  padding-left: 56px;
+}
+
+.steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--accent);
+  color: var(--ink);
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+.steps p {
+  margin-top: 4px;
+  color: var(--muted);
+}
+
+/* Lo que escribe el profesional y lo que hace el asistente */
+.commands {
+  margin-top: 28px;
+  display: grid;
+  gap: 12px;
+}
+
+.command {
+  display: grid;
+  gap: 8px;
+  padding: 14px 16px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.command q {
+  quotes: none;
+  justify-self: start;
+  background: var(--chat-out);
+  border-radius: 10px;
+  padding: 5px 11px;
+  font-weight: 600;
+  font-size: 0.97rem;
+}
+
+.command span {
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+.includes {
+  margin: 26px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 18px;
+}
+
+.includes p {
+  margin-top: 4px;
+  color: var(--muted);
+}
+
+/* ---------- Precio ---------- */
+
+.prices {
+  margin-top: 28px;
+  display: grid;
+  gap: 18px;
+}
+
+.price {
+  padding: 24px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.price h3 {
+  font-family: var(--body);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0;
+}
+
+.price-value {
+  font-family: var(--display);
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 6px;
+}
+
+.price p:last-child {
+  margin-top: 8px;
+  color: var(--muted);
+}
+
+.price-notes {
+  margin: 22px 0 0;
+  padding-left: 20px;
+  color: var(--muted);
+}
+
+/* ---------- Preguntas ---------- */
+
+.faq {
+  margin-top: 24px;
+  max-width: 46em;
+}
+
+.faq details {
+  border-bottom: 1px solid var(--line);
+  padding-block: 14px;
+}
+
+.faq summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.faq details p {
+  margin-top: 8px;
+  color: var(--muted);
+}
+
+/* ---------- Cierre y pie ---------- */
+
+.closing {
+  background: var(--brand);
+  color: #fff;
+  text-align: center;
+}
+
+.closing p {
+  margin: 12px auto 0;
+  max-width: 34em;
+  opacity: 0.9;
+}
+
+.closing .button {
+  margin-top: 24px;
+  background: var(--accent);
+  color: var(--ink);
+}
+
+.closing .button:hover {
+  background: #eeb54a;
+}
+
+.site-footer {
+  padding-block: 26px;
+  font-size: 0.93rem;
+  color: var(--muted);
+}
+
+.site-footer .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 24px;
+}
+
+/* ---------- Política de datos ---------- */
+
+.legal {
+  padding-block: clamp(32px, 6vw, 56px);
+}
+
+.legal .wrap {
+  max-width: 760px;
+}
+
+.legal h1 {
+  font-size: clamp(2rem, 5.5vw, 2.75rem);
+}
+
+.legal h2 {
+  font-size: 1.45rem;
+  margin-top: 34px;
+}
+
+.legal p,
+.legal ul {
+  margin: 10px 0 0;
+}
+
+.legal-date {
+  color: var(--muted);
+  margin-top: 10px;
+}
+
+/* ---------- Pantallas más grandes ---------- */
+
+@media (min-width: 760px) {
+  .two-sides,
+  .prices {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .commands,
+  .includes {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 920px) {
+  .hero .wrap {
+    grid-template-columns: 1.25fr 1fr;
+    gap: 56px;
+  }
+
+  .steps {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .steps li {
+    padding-left: 0;
+    padding-top: 54px;
+  }
+}
+
+@media (max-width: 559px) {
+  .site-nav a:not(.button) {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
