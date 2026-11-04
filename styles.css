@@ -2,20 +2,23 @@
 
 :root {
   color-scheme: light;
-  --ink: #17231d;
-  --muted: #566159;
-  --paper: #faf6ee;
-  --card: #fffdf8;
-  --line: #e4dccb;
-  --brand: #0f4c3a;
-  --brand-dark: #0a3528;
-  --accent: #e2a32d;
-  --chat-bg: #efe7da;
+  /* Los colores del logo y la página de Facebook (D36) */
+  --ink: #0b2a2b;
+  --muted: #4a6061;
+  --paper: #f3f7f6;
+  --card: #ffffff;
+  --line: #d5e3e0;
+  --brand: #0f3d3e;
+  --brand-dark: #0a2c2d;
+  --accent: #ff7a59;
+  --accent-light: #ff9a80;
+  --on-brand: #d6e8e5;
+  --chat-bg: #e4eeeb;
   --chat-in: #ffffff;
-  --chat-out: #d9f5c8;
-  --chat-action: #0f7a5c;
+  --chat-out: #ffe0d6;
+  --chat-action: #0f3d3e;
   --radius: 16px;
-  --display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --display: ui-rounded, "SF Pro Rounded", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
@@ -70,7 +73,7 @@ p {
 /* ---------- Encabezado ---------- */
 
 .site-header {
-  border-bottom: 1px solid var(--line);
+  background: var(--brand);
 }
 
 .site-header .wrap {
@@ -81,12 +84,9 @@ p {
   padding-block: 14px;
 }
 
-.brand {
-  font-family: var(--display);
-  font-size: 1.625rem;
-  font-weight: 700;
-  color: var(--brand);
-  text-decoration: none;
+.brand,
+.brand img {
+  display: block;
 }
 
 .site-nav {
@@ -97,7 +97,7 @@ p {
 }
 
 .site-nav a:not(.button) {
-  color: var(--ink);
+  color: #fff;
   text-decoration: none;
 }
 
@@ -109,8 +109,8 @@ p {
   display: inline-block;
   padding: 13px 22px;
   border-radius: 999px;
-  background: var(--brand);
-  color: #fff;
+  background: var(--accent);
+  color: var(--ink);
   font-weight: 600;
   text-decoration: none;
   text-align: center;
@@ -118,13 +118,14 @@ p {
 }
 
 .button:hover {
-  background: var(--brand-dark);
+  background: var(--accent-light);
 }
 
 .button:focus-visible,
 a:focus-visible {
   outline: 3px solid var(--accent);
   outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--ink);
 }
 
 .button-small {
@@ -136,6 +137,8 @@ a:focus-visible {
 
 .hero {
   padding-block: clamp(36px, 7vw, 76px);
+  background: var(--brand);
+  color: #fff;
 }
 
 .hero .wrap {
@@ -146,7 +149,7 @@ a:focus-visible {
 
 .hero-kicker {
   font-weight: 600;
-  color: var(--brand);
+  color: var(--accent-light);
   margin-bottom: 14px;
 }
 
@@ -157,7 +160,7 @@ a:focus-visible {
 .hero-lead {
   margin-top: 20px;
   font-size: 1.1875rem;
-  color: var(--muted);
+  color: var(--on-brand);
   max-width: 34em;
 }
 
@@ -169,20 +172,25 @@ a:focus-visible {
   gap: 12px 18px;
 }
 
+.hero-actions a:not(.button) {
+  color: #fff;
+}
+
 /* ---------- Conversación de ejemplo ---------- */
 
 .chat {
   width: min(390px, 100%);
   margin-inline: auto;
   border-radius: 26px;
-  border: 7px solid var(--ink);
+  border: 7px solid var(--brand-dark);
   background: var(--chat-bg);
+  color: var(--ink);
   overflow: hidden;
-  box-shadow: 0 18px 40px rgb(23 35 29 / 18%);
+  box-shadow: 0 18px 40px rgb(0 0 0 / 28%);
 }
 
 .chat-title {
-  background: var(--brand);
+  background: var(--brand-dark);
   color: #fff;
   padding: 11px 16px;
   font-weight: 600;
@@ -211,7 +219,7 @@ a:focus-visible {
   border-radius: 12px;
   background: var(--chat-in);
   align-self: flex-start;
-  box-shadow: 0 1px 1px rgb(23 35 29 / 10%);
+  box-shadow: 0 1px 1px rgb(11 42 43 / 10%);
 }
 
 .bubble.out {
@@ -224,8 +232,8 @@ a:focus-visible {
   flex-direction: column;
   gap: 1px;
   margin: 8px -11px -8px;
-  border-top: 1px solid #ece6da;
-  background: #ece6da;
+  border-top: 1px solid #e0e9e6;
+  background: #e0e9e6;
   border-radius: 0 0 12px 12px;
   overflow: hidden;
 }
@@ -250,7 +258,7 @@ a:focus-visible {
 
 .chat-note {
   text-align: center;
-  color: var(--muted);
+  color: var(--on-brand);
   font-size: 0.85rem;
   margin-top: 12px;
 }
@@ -446,17 +454,11 @@ section {
 .closing p {
   margin: 12px auto 0;
   max-width: 34em;
-  opacity: 0.9;
+  color: var(--on-brand);
 }
 
 .closing .button {
   margin-top: 24px;
-  background: var(--accent);
-  color: var(--ink);
-}
-
-.closing .button:hover {
-  background: #eeb54a;
 }
 
 .site-footer {
