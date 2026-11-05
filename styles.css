@@ -574,8 +574,33 @@ section {
 .site-footer .wrap {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: space-between;
   gap: 8px 24px;
+}
+
+.footer-social,
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 18px;
+}
+
+.footer-social a,
+.footer-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  overflow-wrap: anywhere;
+  color: var(--ink);
+}
+
+.footer-social svg {
+  flex: none;
+  width: 18px;
+  height: 18px;
 }
 
 /* ---------- Política de datos ---------- */
